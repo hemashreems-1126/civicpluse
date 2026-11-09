@@ -1,14 +1,11 @@
-// ☁️ OPTIONAL: paste your Firebase web config here to store complaints in the cloud (Firestore).
-// Leave it as null and the site runs in DEMO MODE (data saved in the browser) — no errors either way.
-// Firebase Console → Project settings → Your apps → Web app → Config
-window.FIREBASE_CONFIG = null;
-/* Example:
+// ☁️ Firebase Firestore (cloud database) configuration for CivicPulse.
+// Project: civicpulse-efa84 · Region: asia-south1 (Mumbai) · Plan: Spark (free)
+// The web API key is meant to be public — access is controlled by Firestore security rules.
+// Set this to null to switch back to DEMO MODE (browser storage).
 window.FIREBASE_CONFIG = {
-  apiKey: "AIza...",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123",
-  appId: "1:123:web:abc"
+  apiKey: "AIzaSyDow2Sp2q7NCBoJx_u0uIkJVLWvVFPOmok",
+  authDomain: "civicpulse-efa84.firebaseapp.com",
+  projectId: "civicpulse-efa84",
+  storageBucket: "civicpulse-efa84.firebasestorage.app",
+  messagingSenderId: "954438892155"
 };
-*/

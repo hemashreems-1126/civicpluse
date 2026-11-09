@@ -31,11 +31,11 @@ Citizen / Officer (Browser, mobile or laptop)
         ▼
 GitHub Pages  ── static cloud hosting (HTML/CSS/JS)
         │
-        ├── Firebase Firestore ── cloud NoSQL database (complaints)   [optional]
+        ├── Firebase Firestore ── cloud NoSQL database (complaints)   ✅ connected
         └── OpenStreetMap + Leaflet ── map tiles service
 ```
 - **Hosting:** GitHub Pages (static hosting on a CDN)
-- **Database:** Firebase Firestore (Backend-as-a-Service / PaaS). If it isn't configured, the site runs in **demo mode** using browser storage, so the link never breaks.
+- **Database:** Firebase Firestore (Backend-as-a-Service), project `civicpulse-efa84`. If it can't be reached, the site falls back to **demo mode** using browser storage, so the link never breaks.
 - **Maps:** Leaflet.js + OpenStreetMap (free, no API key)
 
 ## 🧭 How to Use
@@ -44,11 +44,27 @@ GitHub Pages  ── static cloud hosting (HTML/CSS/JS)
 3. **Admin:** log in with demo PIN **`1234`** to move tickets forward. Tickets are sorted by priority (escalated first, then votes).
 4. **Dashboard / Map:** see live statistics. The footer has a **Reset demo data** button.
 
-## 🔌 Connect Firebase (optional, for real cloud storage)
-1. Go to [console.firebase.google.com](https://console.firebase.google.com) and create a project.
-2. Go to **Build → Firestore Database → Create** (test mode).
-3. Go to **Project settings → Add Web App** and copy the config.
-4. Paste the config into `firebase-config.js` (replace `null`) and commit. The footer will show "☁️ Connected to Firebase".
+## 🔌 Firebase (cloud database) – ✅ Connected
+CivicPulse stores every complaint in **Firebase Cloud Firestore**.
+
+| Setting | Value |
+|---|---|
+| Project ID | `civicpulse-efa84` |
+| Database | Cloud Firestore (Standard), test mode |
+| Collection | `complaints` (one document per ticket, e.g. `CP-1001`) |
+| Plan | Spark (free) |
+| Config file | `firebase-config.js` |
+
+The website footer shows **"☁️ Connected to Firebase Firestore"** when the cloud is active.
+If Firebase can't be reached, the app automatically falls back to **demo mode** (browser storage), so it never breaks.
+
+**How it was set up:**
+1. Firebase Console → **Create project** (`civicpulse`, Analytics off).
+2. **Databases & Storage → Firestore Database → Create database** → Mumbai (asia-south1) → **test mode**.
+3. **Project Overview → Add app → Web `</>`** → copied `firebaseConfig`.
+4. Pasted it into `firebase-config.js` and committed. GitHub Pages redeployed automatically.
+
+> Test mode allows reads/writes for 30 days. For long-term use, update the Firestore security rules.
 
 ## 🛠 Tech Stack
 HTML5 · CSS3 (glassmorphism, animations, responsive) · Vanilla JavaScript · Leaflet · Firebase Firestore · GitHub Pages
